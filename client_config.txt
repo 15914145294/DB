@@ -1,0 +1,37 @@
+1.下载安装：plsqldev
+    注意：不要安装在默认的C:\Program Files (x86)目录下，否则会报错，原因是不能解析这个带（）的路径
+
+2.下载安转Oracle32位客户端
+    下载Oracle客户端软件：instantclient-basic-win32-11.1.0.7.0.zip 
+http://www.oracle.com/technology/software/tech/oci/instantclient/htdocs/winsoft.html
+http://www.oracle.com/technetwork/topics/winsoft-085727.html 
+
+3.配置客户端
+解压instantclient-basic-win32-11.1.0.7.0.zip后的instantclient_11_2文件放到到D:\oracle_client（具体放那个盘里，自己决定）下，
+在instantclient_11_2目录下新建network文件，在network目录下建admin文件，在admin文件下建tnsnames.ora这个文件：
+bd22 =
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = 127.0.0.1)(PORT = 1521))
+    )
+    (CONNECT_DATA =
+      (SID = orcl)
+    )
+  )
+            
+
+4.环境变量的设置：
+1) 变量名：ORACLE_HOME
+       变量值：D:\oracle_client\instantclient_11_2
+2) 变量名：TNS_ADMIN
+       变量值：D:\oracle_client\instantclient_11_2
+3) 变量名：NLS_LANG
+       变量值：SIMPLIFIED CHINESE_CHINA.ZHS16GBK
+4) 修改Path变量，
+	在后面添加 D:\oracle_client\instantclient_11_2
+
+
+5.启动PL/SQL Developer ，点击取消不要登录，在Tools\Perferences 下的Connection 配置Oracle_Home和OCI Library，如下：
+OracleHome:D:\oracle_client\instantclient_11_2
+OCI library: D:\oracle_client\instantclient_11_2\oci.dll
+启动PL/SQL Developer，登陆DB
